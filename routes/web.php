@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Home shows quotes
+Route::get('/', [QuoteController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -18,8 +18,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\QuoteManagementController;
